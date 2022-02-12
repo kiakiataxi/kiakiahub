@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kiakia/AllScreens/loginScreen.dart';
+import 'package:kiakia/AllScreens/registrationScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.yellow,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginScreen(),
+      home: RegistrationScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
