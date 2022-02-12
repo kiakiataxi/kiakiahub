@@ -1,10 +1,17 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:kiakia/AllScreens/loginScreen.dart';
 
 
 class RegistrationScreen extends StatelessWidget
 {
   static const String idScreen = "register";
+
+  TextEditingController nameTextEditingController = TextEditingController();
+  TextEditingController emailTextEditingController = TextEditingController();
+  TextEditingController phoneTextEditingController = TextEditingController();
+  TextEditingController passwordTextEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +44,7 @@ class RegistrationScreen extends StatelessWidget
 
                     SizedBox(height: 1.0,),
                     TextField(
+                      controller: nameTextEditingController,
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                         labelText: "Name",
@@ -54,6 +62,7 @@ class RegistrationScreen extends StatelessWidget
 
                     SizedBox(height: 1.0,),
                     TextField(
+                      controller: emailTextEditingController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         labelText: "Email",
@@ -70,6 +79,7 @@ class RegistrationScreen extends StatelessWidget
 
                     SizedBox(height: 1.0,),
                     TextField(
+                      controller: phoneTextEditingController,
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
                         labelText: "Phone",
@@ -86,6 +96,7 @@ class RegistrationScreen extends StatelessWidget
 
                     SizedBox(height: 1.0,),
                     TextField(
+                      controller: passwordTextEditingController,
                       obscureText: true,
                       decoration: InputDecoration(
                         labelText: "Password",
@@ -118,7 +129,24 @@ class RegistrationScreen extends StatelessWidget
                         ),
                         onPressed: ()
                         {
-                          print("loginedin button clicked");
+                          if(nameTextEditingController.text.length < 4)
+                          {
+                            displayToastMessage("name must be atleast 3 characters", context)
+                          }
+                          else if (!emailTextEditingController.text.contains("@"))
+                          {
+                            displayToastMessage("email address not valid", context);
+                          }
+                          else if (phoneTextEditingController.text.isEmpty)
+                          {
+                            displayToastMessage("phone number is required.", context);
+                          }
+                          else if (passwordTextEditingController.text.length < 7)
+                          {
+                            displayToastMessage("password must be atleast 6 characters.", context);
+                          }
+
+                          registerNewUser(context);
                         }
                     ),
 
@@ -143,4 +171,27 @@ class RegistrationScreen extends StatelessWidget
     );
 
   }
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  void registerNewUser(BuildContext context) async
+  {
+    final FirebaseUser firebaseUser = (await _firebaseAuth
+        .createUserWithEmailAndPassword(
+        email: emailTextEditingController.text,
+        password: passwordTextEditingController.text
+    )).user;
+    if (firebaseUser != null) // user created
+    {
+      // save user info to database
+    }
+    else
+    {
+      // error occured - display error msg
+      }
+    }
+  }
+displayToastMessage(String message, BuildContext context)
+{
+  Fluttertoast.showToast(msg: message);
 }
+
+
