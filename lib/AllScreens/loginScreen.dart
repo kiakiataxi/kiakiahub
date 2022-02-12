@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:kiakia/AllScreens/registrationScreen.dart';
 
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class LoginScreen extends StatelessWidget
+{
+  static const String idScreen = "login";
+
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +97,7 @@ class LoginScreen extends StatelessWidget {
               FlatButton(
                 onPressed: ()
                   {
-                    print("clicked");
+                    Navigator.pushNamedAndRemoveUntil(context, RegistrationScreen.idScreen, (route) => false);
                   },
                 child: Text(
                     "Do not have an Account? Register Here."

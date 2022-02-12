@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kiakia/AllScreens/loginScreen.dart';
+import 'package:kiakia/AllScreens/mainscreen.dart';
 import 'package:kiakia/AllScreens/registrationScreen.dart';
 
 void main() {
@@ -20,7 +21,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.yellow,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: RegistrationScreen(),
+      initialRoute: LoginScreen.idScreen,
+      routes: {
+        RegistrationScreen.idScreen:(context) => RegistrationScreen(),
+        LoginScreen.idScreen:(context) => LoginScreen(),
+        MainScreen.idScreen:(context) => MainScreen(),
+
+      },
       debugShowCheckedModeBanner: false,
     );
   }
