@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "973288574363",
+    "project_id": "kiakia-taxi",
+    "storage_bucket": "kiakia-taxi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973288574363:android:a0ea7b466ca24229bfe53e",
+        "android_client_info": {
+          "package_name": "com.rider.kiakia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "973288574363-6769datperef5fbdfih8ufh4ip6m78i7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMxeHvbyLaU4HSMLmxz2tDEONohtpyQSg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "973288574363-6769datperef5fbdfih8ufh4ip6m78i7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
